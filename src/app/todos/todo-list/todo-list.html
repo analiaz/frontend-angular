@@ -1,0 +1,7 @@
+
+<ul class="todo-list">
+    @for (todo of todos | filtrTodo:filtroActual; track todo.todoId)  {
+        <app-todo-item [todo]="todo"></app-todo-item>
+    }
+</ul>
+

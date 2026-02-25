@@ -1,1 +1,43 @@
 /* You can add global styles to this file, and also import other style files */
+
+html, body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background: url('/Fondo.jpg') no-repeat center center fixed !important;
+  background-size: cover !important;
+}
+
+app-root {
+  display: block;
+  min-height: 100vh;
+  /**background: transparent;**/
+}
+
+.todoapp {
+  background: transparent !important;
+}
+
+.header {
+  background: #fff !important;
+}
+
+.todoapp h1{
+  color: white !important;
+  text-transform: uppercase !important;
+}
+
+.new-todo {
+  background: rgba(0, 0, 0, 0.003) !important;
+}
+
+.main {
+  background: #fff !important;
+}
+
+.footer {
+  background: #fff !important;
+}

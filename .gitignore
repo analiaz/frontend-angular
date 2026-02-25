@@ -10,6 +10,7 @@
 /node_modules
 npm-debug.log
 yarn-error.log
+package-lock.json
 
 # IDEs and editors
 .idea/
@@ -19,6 +20,7 @@ yarn-error.log
 *.launch
 .settings/
 *.sublime-workspace
+*.sublime-project
 
 # Visual Studio Code
 .vscode/*
@@ -30,6 +32,7 @@ yarn-error.log
 
 # Miscellaneous
 /.angular/cache
+/.angular
 .sass-cache/
 /connect.lock
 /coverage
@@ -37,6 +40,28 @@ yarn-error.log
 testem.log
 /typings
 
+# e2e
+/e2e/*.js
+/e2e/*.map
+
 # System files
 .DS_Store
 Thumbs.db
+
+# Environment files (descomentar si tienes archivos de entorno sensibles)
+# .env
+# .env.local
+# .env.*.local
+
+# Logs
+logs
+*.log
+lerna-debug.log*
+
+# Test coverage
+coverage/
+*.lcov
+.nyc_output
+
+# Build artifacts
+*.tsbuildinfo
