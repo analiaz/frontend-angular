@@ -2,6 +2,15 @@
 
 This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 20.1.3.
 
+## Instalacion
+
+Angular CLI: 20.3.14
+Node: 22.17.1
+Package Manager: npm 11.9.0
+npm install -g @angular/cli
+npm install @ngrx/store@20 @ngrx/effects@20 @ngrx/entity@20 @ngrx/store-devtools@20
+
+
 ## Development server
 
 To start a local development server, run:
