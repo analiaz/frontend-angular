@@ -7,7 +7,7 @@ html, body {
 }
 
 body {
-  background: url('/Fondo.jpg') no-repeat center center fixed !important;
+  background: url('./app/image/Fondo.jpg') no-repeat center center fixed !important;
   background-size: cover !important;
 }
 
