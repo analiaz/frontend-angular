@@ -9,9 +9,9 @@ import * as TodoActions from './todo.action';
 export class TodoEffects {
   private actions$ = inject(Actions);
   private todoService = inject(TodoService);
-  
+
   // Cargar todos
-  loadTodos$ = createEffect(() => 
+  loadTodos$ = createEffect(() =>
     this.actions$.pipe(
       ofType(TodoActions.cargarTodos),
       mergeMap(() =>
@@ -85,6 +85,23 @@ export class TodoEffects {
             this.todoService.deleteTodo(todoId).pipe(
               map(() => TodoActions.borrarSuccess({ todoId })),
               catchError(error => of(TodoActions.borrarError({ error })))
+            )
+          )
+        )
+      )
+    )
+  );
+
+  // Toggle All - envía cada actualización al backend
+  toggleAll$ = createEffect(() =>
+    this.actions$.pipe(
+      ofType(TodoActions.toggleAll),
+      mergeMap(({ todos }) =>
+        from(todos).pipe(
+          concatMap(({ todoId, isCompleted }) =>
+            this.todoService.updateTodo(todoId, { isCompleted }).pipe(
+              map(todo => TodoActions.toggleSuccess({ todo })),
+              catchError(error => of(TodoActions.toggleError({ error })))
             )
           )
         )

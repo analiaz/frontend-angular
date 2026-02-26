@@ -4,6 +4,12 @@
       <app-todo-search></app-todo-search>
 			<!-- This section should be hidden by default and shown when there are todos -->
 			<section class="main">
+				<input id="toggle-all"
+               class="toggle-all"
+               type="checkbox"
+               (click)="toggleAll()"
+               [checked]="completado">
+				<label for="toggle-all">Mark all as complete</label>
 
         <app-todo-list></app-todo-list>
 			</section>

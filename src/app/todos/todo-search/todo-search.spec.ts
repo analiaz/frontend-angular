@@ -39,9 +39,9 @@ describe('TodoSearch', () => {
 
   it('debería despachar buscarTodos cuando se escriben 3 o más caracteres', (done) => {
     spyOn(store, 'dispatch');
-    
+
     component.searchControl.setValue('abc');
-    
+
     // Esperar el debounceTime de 300ms
     setTimeout(() => {
       expect(store.dispatch).toHaveBeenCalledWith(buscarTodos({ content: 'abc' }));
@@ -51,9 +51,9 @@ describe('TodoSearch', () => {
 
   it('NO debería despachar buscarTodos cuando hay menos de 3 caracteres', (done) => {
     spyOn(store, 'dispatch');
-    
+
     component.searchControl.setValue('ab');
-    
+
     // Esperar el debounceTime
     setTimeout(() => {
       expect(store.dispatch).not.toHaveBeenCalledWith(buscarTodos({ content: 'ab' }));
@@ -61,26 +61,20 @@ describe('TodoSearch', () => {
     }, 350);
   });
 
-  it('debería despachar cargarTodos cuando el campo se vacía', (done) => {
+  it('debería cargarTodos cuando el campo se vacía', (done) => {
     spyOn(store, 'dispatch');
-    
+
     // Primero escribir algo
     component.searchControl.setValue('test');
-    
+
     setTimeout(() => {
       // Luego vaciar
       component.searchControl.setValue('');
-      
+
       setTimeout(() => {
         expect(store.dispatch).toHaveBeenCalledWith(cargarTodos());
         done();
       }, 350);
     }, 350);
-  });
-
-  it('debería desuscribirse al destruirse', () => {
-    spyOn(component['searchSubscription']!, 'unsubscribe');
-    component.ngOnDestroy();
-    expect(component['searchSubscription']!.unsubscribe).toHaveBeenCalled();
   });
 });

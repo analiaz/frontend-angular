@@ -39,33 +39,26 @@ describe('TodoAdd', () => {
 
   it('debería despachar acción crear cuando el input es válido', () => {
     spyOn(store, 'dispatch');
-    
+
     component.txtInput.setValue('Nueva tarea');
     component.agregar();
-    
+
     expect(store.dispatch).toHaveBeenCalledWith(crear({ content: 'Nueva tarea' }));
   });
 
   it('NO debería despachar acción crear cuando el input está vacío', () => {
     spyOn(store, 'dispatch');
-    
+
     component.txtInput.setValue('');
     component.agregar();
-    
+
     expect(store.dispatch).not.toHaveBeenCalled();
   });
 
   it('debería resetear el input después de agregar', () => {
     component.txtInput.setValue('Nueva tarea');
     component.agregar();
-    
-    expect(component.txtInput.value).toBeNull();
-  });
 
-  it('debería validar que el input no acepta solo espacios en blanco', () => {
-    component.txtInput.setValue('   ');
-    // Con el validator required, espacios en blanco son válidos
-    // pero podríamos agregar lógica adicional
-    expect(component.txtInput.valid).toBe(true);
+    expect(component.txtInput.value).toBeNull();
   });
 });

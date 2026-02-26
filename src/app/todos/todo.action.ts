@@ -82,7 +82,7 @@ export const borrarError = createAction(
 // Toggle All
 export const toggleAll = createAction(
   '[TODO] Toggle All Todo',
-  props<{ isCompleted: boolean }>()
+  props<{ todos: { todoId: number, isCompleted: boolean }[] }>()
 );
 
 // Limpiar Todos Completados
