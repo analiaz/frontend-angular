@@ -24,9 +24,9 @@ export class TodoFooter implements OnInit {
   ngOnInit(): void {
 
     this.store.subscribe( state => {
-      this.filtroActual = state.filtro;
-      this.pendientes = state.todos.filter( todo => !todo.isCompleted).length;
-      this.todosCompletados = state.todos.filter( todo => todo.isCompleted);
+      this.filtroActual = state.filtro; // Lee del slice 'filtro' para saber que esta activo
+      this.pendientes = state.todos.filter( todo => !todo.isCompleted).length; // Lee del slice 'todos' para contar los pendientes
+      this.todosCompletados = state.todos.filter( todo => todo.isCompleted); // Lee del slice 'todos' para obtener los completados
     });
   }
 

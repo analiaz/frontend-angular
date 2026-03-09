@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, viewChild, ElementRef, ViewChild } from '@angular/core';
+import { Component, OnInit, OnChanges, SimpleChanges, Input, ElementRef, ViewChild } from '@angular/core';
 import { Todo } from '../models/todo.model';
 import { FormControl, Validators } from '@angular/forms';
 import { Store } from '@ngrx/store';
@@ -10,7 +10,7 @@ import * as action  from '../todo.action';
   standalone: false,
   templateUrl: './todo-item.html',
 })
-export class TodoItem implements OnInit {
+export class TodoItem implements OnInit, OnChanges {
 
   @Input()
   todo!: Todo;
@@ -42,6 +42,14 @@ export class TodoItem implements OnInit {
         isCompleted: valor
       }));
     } );
+  }
+
+  ngOnChanges(changes: SimpleChanges): void {
+    if (changes['todo']?.currentValue) {
+      // Evita disparar toggle al sincronizar cambios externos (ej: toggle-all).
+      this.chkCompletado.setValue(this.todo.isCompleted, { emitEvent: false });
+      this.txtInput.setValue(this.todo.content, { emitEvent: false });
+    }
   }
 
   editar() {
